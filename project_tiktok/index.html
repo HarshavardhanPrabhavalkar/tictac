@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        table,
+        tr,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 60px;
+            margin-left: 100px;
+        }
+        p{
+            margin-left: 100px;
+            
+        }
+        </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Very simple jQuery Tic Tac Toe</h1>
+
+    <table style="background-color: slategray; margin-top: 50px;">
+        <tr>
+            <td id="text1"></td>
+            <td id="text2"></td>
+            <td id="text3"></td>
+        </tr>
+        <tr>
+            <td id="text4"></td>
+            <td id="text5"></td>
+            <td id="text6"></td>
+        </tr>
+        <tr>
+            <td id="text7"></td>
+            <td id="text8"></td>
+            <td id="text9"></td>
+        </tr>
+    </table>
+<br>
+<button style="margin-left: 250px; background-color: aquamarine;">Reset</button>
+<p>plyaer 1 = x</p>
+<p>plyaer 2 = o</p>
+<div id="result"></div>
+
+   
+    <script>
+        let node = [1,2,3,4,5,6,7,8,9];
+        let move = 1;
+        // let text = "";
+        let start = true;
+        $(document).ready(function (){
+            $("table tr td").click(function () {
+                if ($(this).text() == "" && start) {
+                    if ((move % 2) == 1) {
+                       let value = $(this).append("x").attr("id");
+                       console.log(value);
+                       let path = value.split("");
+                       console.log(path);
+                       let paths = path[path.length-1];
+                       console.log(paths);
+                       let set = paths.replace(paths,"x")
+                       console.log(set);
+
+                       if(paths != null){
+                           for(i=0; i < node.length; i++){  
+                               if(node[i] == paths){
+                                   node[i] = set;
+                               }
+                           }
+                       }
+                    }
+                    else {
+                        // $(this).append("0");
+                        let value= $(this).append("o").attr("id");
+                       console.log(value);
+                       let path = value.split("");
+                       let paths = path[path.length-1];
+                       console.log(paths);
+                       let set = paths.replace(paths,"o")
+                       console.log(set);
+
+                       if(paths != null){
+                           for(i=0;i<node.length;i++){
+                               if(node[i]==paths){
+                                   node[i]=set;
+                               }
+                           }
+                       }
+
+                    }
+                    move++;
+                }
+                   
+
+
+                if(("table tr td")!=null){
+                    if((node[0] == node[1]) && (node[1] == node[2]))
+                       {
+                        if(node[0]  == "x"){
+                            alert("you win the match");
+                        }  
+                        else{
+                            alert("you won");
+                        } 
+
+                       }
+                       
+                    if((node[3] == node[4]) && (node[4] == node[5]))
+                       {
+                        if(node[3]  == "x"){
+                            alert("you win the match");
+                        }  
+                        else{
+                            alert("you won");
+                        } 
+
+                       }
+                       
+                    if((node[6] == node[7]) && (node[7] == node[8]))
+                       {
+                        if(node[6]  == "x"){
+                            alert("you win the match");
+                        }  
+                        else{
+                            alert("you won");
+                        } 
+
+                       }
+                       
+                    if((node[0] == node[3]) && (node[3] == node[6]))
+                       {
+                        if(node[0]  == "x"){
+                            alert("you win the match");
+                        }  
+                        else{
+                            alert("you won");
+                        } 
+
+                       }
+                       
+                    if((node[1] == node[4]) && (node[4] == node[7]))
+                       {
+                        if(node[1]  == "x"){
+                            alert("you win the match");
+                        }  
+                        else{
+                            alert("you won");
+                        } 
+
+                       }
+                       
+                    if((node[2] == node[5]) && (node[5] == node[8]))
+                       {
+                        if(node[2]  == "x"){
+                            alert("you win the match");
+                        }  
+                        else{
+                            alert("you won");
+                        } 
+
+                       }
+                       
+                    if((node[0] == node[4]) && (node[4] == node[8]))
+                       {
+                        if(node[0]  == "x"){
+                            alert("you win the match");
+                        }  
+                        else{
+                            alert("you won");
+                        } 
+
+                       }
+                       
+                    if((node[2] == node[4]) && (node[4] == node[6]))
+                       {
+                        if(node[2]  == "x"){
+                            alert("you win the match");
+                        }  
+                        else{
+                            alert("you won");
+                        } 
+
+                       }
+                }
+                    
+                
+ 
+            });
+
+
+            $("button").click(function(){
+                node =[1,2,3,4,5,6,7,8,9]
+
+                move=1;
+                for(i=0;i<node.length;i++){
+                    node[i]=="";
+                    
+                }
+
+                $("table tr td").empty();
+
+                console.log(node);
+            });
+        });
+        
+    </script>
+
+
+</body>
+
+</html>
